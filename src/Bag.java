@@ -1,10 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bag {
 
-    private int[] items;
+    private List<Integer> items;
     private int count;
 
     public Bag() {
-        items = new int[1];
+        items = new ArrayList<Integer>();
     }
 
     public boolean isEmpty() {
@@ -12,7 +15,7 @@ public class Bag {
     }
 
     public void add(final int item) {
-        items[count] = item;
+        items.add(item);
         count++;
     }
 
