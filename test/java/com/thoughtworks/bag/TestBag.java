@@ -1,3 +1,6 @@
+package com.thoughtworks.bag;
+
+import com.thoughtworks.bag.Bag;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

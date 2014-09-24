@@ -1,3 +1,5 @@
+package com.thoughtworks.bag;
+
 import java.util.ArrayList;
 import java.util.List;
 
