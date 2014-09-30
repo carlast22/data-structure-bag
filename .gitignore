@@ -9,4 +9,8 @@ logs/
 *.iws
 *.ids
 .idea/
+gradlew
+gradlew.bat
+build/classes
+gradle/wrapper
 
