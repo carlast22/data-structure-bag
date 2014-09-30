@@ -14,11 +14,9 @@ public class Bag {
     }
 
     public void add(final int item) {
-        int length = items.length + 1;
-        int [] aux = new int[length];
-        for(int i =0; i<items.length; i++) {
-           aux[i] = items[i];
-        }
+        final int capacity = items.length;
+        final int[] aux = createArrWithCapacityIncreasedByOne(capacity);
+        copyElements(items, aux);
         aux[count] = item;
         items = aux;
         count++;
@@ -26,5 +24,17 @@ public class Bag {
 
     public int size() {
         return count;
+    }
+
+    private int[] createArrWithCapacityIncreasedByOne(final int capacity) {
+        final int newCapacity = capacity + 1;
+        final int [] aux = new int[newCapacity];
+        return aux;
+    }
+
+    private void copyElements(final int[] source, final int[] target) {
+        for(int i =0; i<source.length; i++) {
+            target[i] = source[i];
+        }
     }
 }
