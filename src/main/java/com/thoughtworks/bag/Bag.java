@@ -14,7 +14,13 @@ public class Bag {
     }
 
     public void add(final int item) {
-        items[count] = item;
+        int length = items.length + 1;
+        int [] aux = new int[length];
+        for(int i =0; i<items.length; i++) {
+           aux[i] = items[i];
+        }
+        aux[count] = item;
+        items = aux;
         count++;
     }
 
