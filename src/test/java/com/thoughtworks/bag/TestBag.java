@@ -1,4 +1,4 @@
-package java.com.thoughtworks.bag;
+package com.thoughtworks.bag;
 
 import org.junit.Test;
 

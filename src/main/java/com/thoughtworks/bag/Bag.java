@@ -1,15 +1,12 @@
 package com.thoughtworks.bag;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Bag {
 
-    private List<Integer> items;
+    private int[] items;
     private int count;
 
     public Bag() {
-        items = new ArrayList<Integer>();
+        items = new int[1];
     }
 
     public boolean isEmpty() {
@@ -17,7 +14,7 @@ public class Bag {
     }
 
     public void add(final int item) {
-        items.add(item);
+        items[count] = item;
         count++;
     }
 
