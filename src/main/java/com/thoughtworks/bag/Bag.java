@@ -32,6 +32,10 @@ public class Bag {
         return aux;
     }
 
+    public int[] getElements() {
+        return items;
+    }
+
     private void copyElements(final int[] source, final int[] target) {
         for(int i =0; i<source.length; i++) {
             target[i] = source[i];

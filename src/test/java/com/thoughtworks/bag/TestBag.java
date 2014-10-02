@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class TestBag {
 
@@ -45,5 +46,22 @@ public class TestBag {
         bag.add(1);
         final int size = bag.size();
         assertEquals(2, size);
+    }
+
+    @Test
+    public void shouldContainAddedElements() {
+        final Bag bag = new Bag();
+        bag.add(1);
+        bag.add(2);
+        final int[] elements = bag.getElements();
+        assertArrayContains(1, elements);
+        assertArrayContains(2, elements);
+    }
+
+    private void assertArrayContains(final int expected, final int[] source) {
+        for(int i = 0; i < source.length; i++) {
+            if (source[i] == expected) return;
+        }
+        fail(String.format("<%s> is not present in array", expected));
     }
 }
