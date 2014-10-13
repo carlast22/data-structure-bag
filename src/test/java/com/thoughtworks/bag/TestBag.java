@@ -18,7 +18,7 @@ public class TestBag {
 
     @Test
     public void shouldNotBeEmptyAfterAddingItem() {
-        final Bag bag = new Bag();
+        final Bag<Integer> bag = new Bag<Integer>();
         bag.add(1);
         final boolean empty = bag.isEmpty();
         assertFalse(empty);
@@ -33,7 +33,7 @@ public class TestBag {
 
     @Test
     public void shouldIncrementCounterByOne() {
-        final Bag bag = new Bag();
+        final Bag<Integer> bag = new Bag<Integer>();
         bag.add(1);
         final int size = bag.size();
         assertEquals(1, size);
@@ -41,7 +41,7 @@ public class TestBag {
 
     @Test
     public void shouldIncrementCounterByOnePerItemAdded() {
-        final Bag bag = new Bag();
+        final Bag<Integer> bag = new Bag<Integer>();
         bag.add(1);
         bag.add(1);
         final int size = bag.size();
@@ -50,15 +50,15 @@ public class TestBag {
 
     @Test
     public void shouldContainAddedElements() {
-        final Bag bag = new Bag();
+        final Bag<Object> bag = new Bag<Object>();
         bag.add(1);
         bag.add(2);
-        final int[] elements = bag.getElements();
+        final Object[] elements = bag.getElements();
         assertArrayContains(1, elements);
         assertArrayContains(2, elements);
     }
 
-    private void assertArrayContains(final int expected, final int[] source) {
+    private void assertArrayContains(final Object expected, final Object[] source) {
         for(int i = 0; i < source.length; i++) {
             if (source[i] == expected) return;
         }

@@ -1,21 +1,22 @@
 package com.thoughtworks.bag;
 
-public class Bag {
+public class Bag<T> {
 
-    private int[] items;
+    private T[] items;
     private int count;
 
     public Bag() {
-        items = new int[1];
+
+        items = (T[]) new Object[1];
     }
 
     public boolean isEmpty() {
         return count == 0;
     }
 
-    public void add(final int item) {
+    public void add(final T item) {
         final int capacity = items.length;
-        final int[] aux = createArrWithCapacityIncreasedByOne(capacity);
+        final T[] aux = createArrWithCapacityIncreasedByOne(capacity);
         copyElements(items, aux);
         aux[count] = item;
         items = aux;
@@ -26,19 +27,20 @@ public class Bag {
         return count;
     }
 
-    private int[] createArrWithCapacityIncreasedByOne(final int capacity) {
+    private T[] createArrWithCapacityIncreasedByOne(final int capacity) {
         final int newCapacity = capacity + 1;
-        final int [] aux = new int[newCapacity];
+        final T [] aux = (T[]) new Object[newCapacity];
         return aux;
     }
 
-    public int[] getElements() {
+    public T[] getElements() {
         return items;
     }
 
-    private void copyElements(final int[] source, final int[] target) {
+    private void copyElements(final T[] source, final T[] target) {
         for(int i =0; i<source.length; i++) {
             target[i] = source[i];
         }
     }
 }
+
