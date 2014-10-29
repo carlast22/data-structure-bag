@@ -1,13 +1,16 @@
 package com.thoughtworks.bag;
 
+import java.lang.reflect.Array;
+
 public class Bag<T> {
 
+    private final Class<T> type;
     private T[] items;
     private int count;
 
-    public Bag() {
-
-        items = (T[]) new Object[1];
+    public Bag(final Class<T> type) {
+        this.type = type;
+        items = createArrWithCapacityIncreasedByOne(0);
     }
 
     public boolean isEmpty() {
@@ -29,8 +32,8 @@ public class Bag<T> {
 
     private T[] createArrWithCapacityIncreasedByOne(final int capacity) {
         final int newCapacity = capacity + 1;
-        final T [] aux = (T[]) new Object[newCapacity];
-        return aux;
+        final T[] tsArr = (T[]) Array.newInstance(type, newCapacity);
+        return tsArr;
     }
 
     public T[] getElements() {

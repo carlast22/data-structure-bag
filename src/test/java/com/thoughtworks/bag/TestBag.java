@@ -11,14 +11,14 @@ public class TestBag {
 
     @Test
     public void shouldStartEmpty() {
-        final Bag bag = new Bag();
+        final Bag bag = new Bag(CustomType.class);
         final boolean empty = bag.isEmpty();
         assertTrue(empty);
     }
 
     @Test
     public void shouldNotBeEmptyAfterAddingItem() {
-        final Bag<Integer> bag = new Bag<Integer>();
+        final Bag<Integer> bag = new Bag<Integer>(Integer.class);
         bag.add(1);
         final boolean empty = bag.isEmpty();
         assertFalse(empty);
@@ -26,14 +26,14 @@ public class TestBag {
 
     @Test
     public void shouldStartSizeOnZero() {
-        final Bag bag = new Bag();
+        final Bag<Integer> bag = new Bag(Integer.class);
         int size = bag.size();
         assertEquals(0, size);
     }
 
     @Test
     public void shouldIncrementCounterByOne() {
-        final Bag<Integer> bag = new Bag<Integer>();
+        final Bag<Integer> bag = new Bag<Integer>(Integer.class);
         bag.add(1);
         final int size = bag.size();
         assertEquals(1, size);
@@ -41,7 +41,7 @@ public class TestBag {
 
     @Test
     public void shouldIncrementCounterByOnePerItemAdded() {
-        final Bag<Integer> bag = new Bag<Integer>();
+        final Bag<Integer> bag = new Bag<Integer>(Integer.class);
         bag.add(1);
         bag.add(1);
         final int size = bag.size();
@@ -50,7 +50,7 @@ public class TestBag {
 
     @Test
     public void shouldContainAddedElements() {
-        final Bag<Object> bag = new Bag<Object>();
+        final Bag<Object> bag = new Bag<Object>(Object.class);
         bag.add(1);
         bag.add(2);
         final Object[] elements = bag.getElements();
@@ -58,10 +58,20 @@ public class TestBag {
         assertArrayContains(2, elements);
     }
 
-    private void assertArrayContains(final Object expected, final Object[] source) {
-        for(int i = 0; i < source.length; i++) {
-            if (source[i] == expected) return;
+    @Test
+    public void shouldAddCustomTypes() {
+        final Bag<CustomType> bag = new Bag<CustomType>(CustomType.class);
+        bag.add(new CustomType(1));
+        bag.add(new CustomType(2));
+        final CustomType[] elements = bag.getElements();
+        assertArrayContains(new CustomType(1), elements);
+        assertArrayContains(new CustomType(2), elements);
+    }
+
+    private <T> void assertArrayContains(final T expected, final T[] bag) {
+        for (T item : bag) {
+            if (expected.equals(item)) return;
         }
-        fail(String.format("<%s> is not present in array", expected));
+        fail(String.format("<%s> is not present in array <%s>", expected, bag));
     }
 }
