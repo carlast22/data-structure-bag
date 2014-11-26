@@ -4,7 +4,6 @@ import java.lang.reflect.Array;
 
 public class Queue<T> {
 
-    private boolean empty;
     private Class<T> type;
     private T[] items;
     private int count;
@@ -65,4 +64,3 @@ public class Queue<T> {
         }
     }
 }
-
