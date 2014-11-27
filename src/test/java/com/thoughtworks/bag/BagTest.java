@@ -7,7 +7,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-public class TestBag {
+public class BagTest {
 
     @Test
     public void shouldStartEmpty() {

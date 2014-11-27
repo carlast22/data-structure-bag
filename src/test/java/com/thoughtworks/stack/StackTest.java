@@ -37,4 +37,15 @@ public class StackTest {
         final int lenght = stack.size();
         assertThat(lenght, is(2));
     }
+
+    @Test
+    public void shouldRemoveTheLastAddedElement() {
+        final Stack stack = new Stack<Integer>(Integer.class);
+        stack.add(1);
+        stack.add(2);
+        stack.add(3);
+        stack.pop();
+        final int length = stack.size();
+        assertThat(length, is(2));
+    }
 }
