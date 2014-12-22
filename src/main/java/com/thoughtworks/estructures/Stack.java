@@ -10,7 +10,7 @@ public class Stack<T> {
 
     public Stack(final Class<T> type) {
         this.type = type;
-        items = createArrWithCapacityIncreasedByOne(0);
+        items = createArrWithCapacity(0);
     }
 
     public boolean isEmpty() {
@@ -23,7 +23,7 @@ public class Stack<T> {
 
     public void add(T item) {
         final int capacity = items.length;
-        final T[] aux = createArrWithCapacityIncreasedByOne(capacity + 1);
+        final T[] aux = createArrWithCapacity(capacity + 1);
         copyAllElements(items, aux);
         aux[count] = item;
         items = aux;
@@ -33,14 +33,14 @@ public class Stack<T> {
     public T pop() {
         final T last = items[items.length - 1];
         final int capacity = items.length;
-        final T[] aux = createArrWithCapacityIncreasedByOne(capacity - 1);
+        final T[] aux = createArrWithCapacity(capacity - 1);
         copyAllElementsButLast(items, aux);
         items = aux;
         count --;
         return last;
     }
 
-    private T[] createArrWithCapacityIncreasedByOne(final int capacity) {
+    private T[] createArrWithCapacity(final int capacity) {
         final T[] tsArr = (T[]) Array.newInstance(type, capacity);
         return tsArr;
     }
