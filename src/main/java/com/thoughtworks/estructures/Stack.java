@@ -1,4 +1,4 @@
-package com.thoughtworks.stack;
+package com.thoughtworks.estructures;
 
 import java.lang.reflect.Array;
 

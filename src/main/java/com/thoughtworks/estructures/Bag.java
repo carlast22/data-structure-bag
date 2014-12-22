@@ -1,4 +1,4 @@
-package com.thoughtworks.bag;
+package com.thoughtworks.estructures;
 
 import java.lang.reflect.Array;
 

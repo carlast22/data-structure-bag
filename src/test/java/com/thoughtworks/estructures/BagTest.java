@@ -1,4 +1,4 @@
-package com.thoughtworks.bag;
+package com.thoughtworks.estructures;
 
 import org.junit.Test;
 

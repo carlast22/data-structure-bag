@@ -1,5 +1,6 @@
-package com.thoughtworks.stack;
+package com.thoughtworks.estructures;
 
+import com.thoughtworks.estructures.Stack;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

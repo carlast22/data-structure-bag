@@ -1,5 +1,6 @@
-package com.thoughtworks.queue;
+package com.thoughtworks.estructures;
 
+import com.thoughtworks.estructures.Queue;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
