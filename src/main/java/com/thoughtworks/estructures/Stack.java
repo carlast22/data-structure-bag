@@ -23,7 +23,7 @@ public class Stack<T> {
 
     public void add(T item) {
         final int capacity = items.length;
-        final T[] aux = createArrWithCapacityIncreasedByOne(capacity);
+        final T[] aux = createArrWithCapacityIncreasedByOne(capacity + 1);
         copyAllElements(items, aux);
         aux[count] = item;
         items = aux;
@@ -33,7 +33,7 @@ public class Stack<T> {
     public T pop() {
         final T last = items[items.length - 1];
         final int capacity = items.length;
-        final T[] aux = createArrWithCapacityDecreasedByOne(capacity);
+        final T[] aux = createArrWithCapacityDecreasedByOne(capacity - 1);
         copyAllElementsButLast(items, aux);
         items = aux;
         count --;
@@ -41,14 +41,12 @@ public class Stack<T> {
     }
 
     private T[] createArrWithCapacityDecreasedByOne(final int capacity) {
-        final int newCapacity = capacity - 1;
-        final T[] tsArr = (T[]) Array.newInstance(type, newCapacity);
+        final T[] tsArr = (T[]) Array.newInstance(type, capacity);
         return tsArr;
     }
 
     private T[] createArrWithCapacityIncreasedByOne(final int capacity) {
-        final int newCapacity = capacity + 1;
-        final T[] tsArr = (T[]) Array.newInstance(type, newCapacity);
+        final T[] tsArr = (T[]) Array.newInstance(type, capacity);
         return tsArr;
     }
 
