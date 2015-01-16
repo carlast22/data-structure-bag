@@ -1,16 +1,17 @@
 package com.thoughtworks.estructures;
-
-import java.lang.reflect.Array;
+import com.thoughtworks.estructures.utilities.ArrayUtilities;
 
 public class Stack<T> {
 
     private Class<T> type;
     private int count;
     private T[] items;
+    private final ArrayUtilities utilities;
 
     public Stack(final Class<T> type) {
         this.type = type;
-        items = createArrWithCapacity(0);
+        utilities = new ArrayUtilities<T>(type);
+        items = (T[]) utilities.createArrWithCapacity(0);
     }
 
     public boolean isEmpty() {
@@ -23,7 +24,7 @@ public class Stack<T> {
 
     public void add(T item) {
         final int capacity = items.length;
-        final T[] aux = createArrWithCapacity(capacity + 1);
+        final T[] aux = (T[]) utilities.createArrWithCapacity(capacity + 1);
         copyAllElements(items, aux);
         aux[count] = item;
         items = aux;
@@ -33,16 +34,11 @@ public class Stack<T> {
     public T pop() {
         final T last = items[items.length - 1];
         final int capacity = items.length;
-        final T[] aux = createArrWithCapacity(capacity - 1);
+        final T[] aux = (T[]) utilities.createArrWithCapacity(capacity - 1);
         copyAllElementsButLast(items, aux);
         items = aux;
         count --;
         return last;
-    }
-
-    private T[] createArrWithCapacity(final int capacity) {
-        final T[] tsArr = (T[]) Array.newInstance(type, capacity);
-        return tsArr;
     }
 
     private void copyAllElementsButLast(T[] source, T[] target) {
