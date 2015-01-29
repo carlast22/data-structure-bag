@@ -25,7 +25,6 @@ public class ArrayUtilitiesTest {
     public static Collection<Integer[]> arrayParameters() {
         return Arrays.asList(
                 new Integer[][]{
-                        {0}, //initial state
                         {1}, //simple scenario, a happy one
                         {2}, //this is expected to fail
                         {10} //every scenario

@@ -10,7 +10,10 @@ public class ArrayUtilities<T> {
         this.type = type;
     }
 
-    public T[] createArrWithCapacity(int capacity) {
+    public T[] createArrWithCapacity(int capacity) throws ArrayUtilitiesException {
+        if(capacity < 0){
+            throw new ArrayUtilitiesException("Esta mal");
+        }
         return (T[]) Array.newInstance(type, capacity);
     }
 }
