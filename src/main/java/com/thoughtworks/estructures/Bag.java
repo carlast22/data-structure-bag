@@ -1,16 +1,18 @@
 package com.thoughtworks.estructures;
 
-import java.lang.reflect.Array;
+import com.thoughtworks.estructures.utilities.ArrayUtilities;
 
 public class Bag<T> {
 
     private final Class<T> type;
     private T[] items;
     private int count;
+    private final ArrayUtilities<T> utilities;
 
     public Bag(final Class<T> type) {
         this.type = type;
-        items = createArrWithCapacityIncreasedByOne(0);
+        utilities = new ArrayUtilities<>(type);
+        items = utilities.createArrWithCapacity(0);
     }
 
     public boolean isEmpty() {
@@ -19,7 +21,7 @@ public class Bag<T> {
 
     public void add(final T item) {
         final int capacity = items.length;
-        final T[] aux = createArrWithCapacityIncreasedByOne(capacity);
+        final T[] aux = utilities.createArrWithCapacity(capacity + 1);
         copyElements(items, aux);
         aux[count] = item;
         items = aux;
@@ -28,12 +30,6 @@ public class Bag<T> {
 
     public int size() {
         return count;
-    }
-
-    private T[] createArrWithCapacityIncreasedByOne(final int capacity) {
-        final int newCapacity = capacity + 1;
-        final T[] tsArr = (T[]) Array.newInstance(type, newCapacity);
-        return tsArr;
     }
 
     public T[] getElements() {
