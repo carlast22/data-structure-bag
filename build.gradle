@@ -1,6 +1,7 @@
 apply plugin: 'java'
+apply plugin: 'idea'
 
-sourceCompatibility = 1.5
+sourceCompatibility = 1.8
 version = '1.0'
 
 repositories {
@@ -8,5 +9,8 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile (
+            'junit:junit:4.11',
+            'pl.pragmatists:JUnitParams:1.0.4',
+    )
 }

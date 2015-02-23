@@ -16,4 +16,11 @@ public class ArrayUtilities<T> {
         }
         return (T[]) Array.newInstance(type, capacity);
     }
+
+    public T[] copyAllElements(T[] source, T[] target) {
+        for(int i = 0; i < source.length; i++) {
+            target[i] = source[i];
+        }
+        return target;
+    }
 }

@@ -22,7 +22,7 @@ public class Queue<T> {
     public void add(final T item) {
         final int capacity = items.length;
         final T[] aux = (T[]) utilities.createArrWithCapacity(capacity + 1);
-        copyAllElements(items, aux);
+        utilities.copyAllElements(items, aux);
         aux[count] = item;
         items = aux;
         count++;
@@ -40,12 +40,6 @@ public class Queue<T> {
         items = aux;
         count --;
         return first;
-    }
-
-    private void copyAllElements(final T[] source, final T[] target) {
-        for (int i = 0; i < source.length; i++) {
-            target[i] = source[i];
-        }
     }
 
     private void copyAllElementsButFirst(final T[] source, final T[] target) {

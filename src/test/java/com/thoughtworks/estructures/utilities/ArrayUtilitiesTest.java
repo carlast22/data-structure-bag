@@ -1,41 +1,41 @@
 package com.thoughtworks.estructures.utilities;
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Stack;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-@RunWith(Parameterized.class)
+@RunWith(JUnitParamsRunner.class)
 public class ArrayUtilitiesTest {
 
-    private int capacity;
-
-    public ArrayUtilitiesTest(int capacity) {
-        this.capacity = capacity;
-    }
-
-    @Parameters
-    public static Collection<Integer[]> arrayParameters() {
-        return Arrays.asList(
-                new Integer[][]{
+    public Integer[][] parametersForShouldCreateAnArrayWithCapacity() {
+        return  new Integer[][]{
                         {1}, //simple scenario, a happy one
                         {2}, //this is expected to fail
                         {10} //every scenario
-                }
-        );
+                };
     }
 
     @Test
-    public void shouldCreateAnArrayWithCapacity() {
+    @Parameters
+    public void shouldCreateAnArrayWithCapacity(Integer capacity) {
         ArrayUtilities<Stack> arrayUtilities = new ArrayUtilities<>(Stack.class);
         Stack[] arrWithCapacity = arrayUtilities.createArrWithCapacity(capacity);
         assertThat(arrWithCapacity.length, is(capacity));
+    }
+
+    @Test
+    public void shouldCopyAllTheElements() {
+        Integer capacity = 2;
+        ArrayUtilities<Stack> arrayUtilities = new ArrayUtilities<>(Stack.class);
+        Stack[] source = arrayUtilities.createArrWithCapacity(capacity);
+        Stack[] target = arrayUtilities.createArrWithCapacity(capacity);
+        Stack[] copy = arrayUtilities.copyAllElements(source, target);
+        assertThat(target.length, is(copy.length));
     }
 }
